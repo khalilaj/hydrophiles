@@ -1,8 +1,7 @@
-from django.urls import path
-from . import views
-from django.conf.urls.static import static
-from django.conf import settings
+from rest_framework import routers
+from .api import SystemViewset
 
-urlpatterns = [
-    path('api/system/', views.SystemView.as_view(), name= 'system_list'),
-]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+router = routers.DefaultRouter()
+router.register('api/system', SystemViewset, 'system')
+
+urlpatterns = router.urls

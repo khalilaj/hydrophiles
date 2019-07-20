@@ -11,10 +11,9 @@ import { Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 
 import Home from "./layout/Home";
-import LeadDetails from "./leads/LeadDetails";
-import SystemProfile from "./leads/SystemProfile";
+import SystemDetails from "../components/system/SystemDetails";
+import UserProfile from "./auth/UserProfile";
 import SystemDashboard from "./system/SystemDashboard";
-
 import NavBar from "./layout/NavBar";
 import Alerts from "./layout/Alerts";
 import Register from "./auth/Register";
@@ -52,9 +51,9 @@ class App extends Component {
                 <PrivateRoute
                   exact
                   path="/conditions"
-                  component={LeadDetails}
+                  component={SystemDetails}
                 />
-                <PrivateRoute exact path="/profile" component={SystemProfile} />
+                <PrivateRoute exact path="/profile" component={UserProfile} />
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />

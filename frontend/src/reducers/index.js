@@ -1,14 +1,19 @@
 import { combineReducers } from "redux";
-import leads from "./leads";
 import errors from "./errors";
 import messages from "./messages";
-import system from "./system";
 import auth from "./auth";
 
+import system from "./system";
+import crops from "./systemcrop";
+import pumps from "./systempump";
+import conditions from "./systemcondition";
+
 export default combineReducers({
-  leads,
   auth,
   messages,
   errors,
-  system
+  system,
+  crops,
+  pumps,
+  conditions
 });

@@ -1,9 +1,6 @@
 import React, { Fragment } from "react";
 
-import LeadForm from "./LeadForm";
-import Leads from "./Leads";
-
-export default function Dashboard() {
+export default function SystemProfile() {
   return (
     <div>
       <hr className="bg-primary" />

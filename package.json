@@ -1,7 +1,7 @@
 {
-  "name": "leadmanager",
+  "name": "hydrophiles",
   "version": "1.0.0",
-  "description": "> A Lead management system built with Django/React/Redux app that uses token based authentication with django knox.",
+  "description": "> A Hydroponic Management system built with Django/React/Redux app that uses token based authentication with django knox.",
   "main": "webpack.config.js",
   "scripts": {
     "dev": "webpack --mode development --watch ./frontend/src/index.js --output ./frontend/static/frontend/main.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/khalilaj/leads.git"
+    "url": "git+https://github.com/khalilaj/hydrophiles.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/khalilaj/leads/issues"
+    "url": "https://github.com/khalilaj/hydrophiles/issues"
   },
-  "homepage": "https://github.com/khalilaj/leads#readme",
+  "homepage": "https://github.com/khalilaj/hydrophiles#readme",
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
@@ -42,6 +42,7 @@
     "react-alert-template-basic": "^1.0.0",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
+    "react-table": "^6.10.0",
     "react-transition-group": "^4.2.1",
     "recharts": "^1.6.2",
     "redux": "^4.0.1",

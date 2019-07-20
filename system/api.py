@@ -3,8 +3,13 @@ from .models import System
 from .serializer import SystemSerializer
 
 class SystemViewset (viewsets.ModelViewSet):
-    queryset = System.objects.all()
-    permissions = [
-        permissions.AllowAny
+    permission_classes = [
+        permissions.IsAuthenticated,
     ]
     serializer_class = SystemSerializer
+
+    def get_queryset(self):
+        return  System.objects.filter(owner=self.request.user) 
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)

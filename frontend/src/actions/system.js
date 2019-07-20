@@ -2,11 +2,12 @@ import axios from "axios";
 import { createMessage, returnErrors } from "./messages";
 
 import { GET_SYSTEMS, DELETE_SYSTEMS, ADD_SYSTEMS } from "./types";
+import { tokenConfig } from "./auth";
 
 // GET SYSTEM
-export const getSystem = () => dispatch => {
+export const getSystem = () => (dispatch, getState) => {
   axios
-    .get("/api/system/")
+    .get("/api/system/", tokenConfig(getState))
     .then(res => {
       dispatch({
         type: GET_SYSTEMS,
@@ -19,9 +20,9 @@ export const getSystem = () => dispatch => {
 };
 
 // DELETE SYSTEM
-export const deleteSystem = id => dispatch => {
+export const deleteSystem = id => (dispatch, getState) => {
   axios
-    .delete(`/api/system/${id}/`)
+    .delete(`/api/system/${id}/`, tokenConfig(getState))
     .then(res => {
       dispatch(createMessage({ deleteLead: "System Deleted" }));
       dispatch({
@@ -33,9 +34,9 @@ export const deleteSystem = id => dispatch => {
 };
 
 // ADD SYSTEM
-export const addSystem = system => dispatch => {
+export const addSystem = system => (dispatch, getState) => {
   axios
-    .post("/api/system/", system, {
+    .post("/api/system/", system, tokenConfig(getState), {
       headers: {
         "content-type": "multipart/form-data"
       }
