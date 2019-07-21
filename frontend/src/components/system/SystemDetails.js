@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import SystemConditions from "../systemconditions/SystemConditions";
+import SystemConditionsReports from "../systemconditions/SystemConditionsReports";
+import SystemConditionsList from "../systemconditions/SystemConditionsList";
 import SystemDashboard from "./SystemDashboard";
 import SystemCropDashboard from "../systemcrop/SystemCropDashboard";
 import SystemProfile from "./SystemProfile";
@@ -73,12 +74,8 @@ export class SystemDetails extends Component {
             aria-labelledby="pills-home-tab"
           >
             <div className="container">
-              <SystemCropDashboard />
-              <br />
-              <h1 className="text-center">Reports </h1>
-              <hr className="primary" />
-              <br />
-              <SystemConditions />
+              <SystemConditionsList />
+              <SystemConditionsReports />
             </div>
           </div>
           <div

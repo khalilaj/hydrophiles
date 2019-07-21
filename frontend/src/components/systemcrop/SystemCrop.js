@@ -2,10 +2,13 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { getCrops } from "../../actions/systemcrops";
+import { getCrops, deleteCrops } from "../../actions/systemcrops";
+import Moment from "react-moment";
 
 import ReactTable from "react-table";
 import "react-table/react-table.css";
+
+import SystemCropEditForm from "./SystemCropEditForm";
 
 export class SystemCrop extends Component {
   static propTypes = {
@@ -20,21 +23,48 @@ export class SystemCrop extends Component {
   render() {
     const columns = [
       {
+        Header: "Created At",
+        accessor: "created_at",
+        Cell: row => <Moment date={row.value} />
+      },
+      {
+        Header: "Updated On",
+        accessor: "updated_on",
+        Cell: row => <Moment date={row.value} />
+      },
+      {
         Header: "Crop Name",
         accessor: "system_crop_name",
         filterMethod: (filter, row) => row[filter.id].includes(filter.value)
       },
       {
         Header: "Seedling Amount",
-        accessor: "system_seedlings_amount"
+        accessor: "system_seedlings_amount",
+        filterMethod: (filter, row) => row[filter.id].includes(filter.value)
       },
       {
         Header: "Edit",
-        accessor: "id"
+        accessor: "id",
+        Cell: row => (
+          <SystemCropEditForm
+            rowVal={row.value}
+            rowIndex={row.index}
+            row={row}
+          />
+        )
       },
       {
         Header: "Delete",
-        accessor: "id"
+        accessor: "id",
+        Cell: row => (
+          <button
+            onClick={this.props.deleteCrops.bind(this, row.value)}
+            className="btn btn-danger btn-sm"
+          >
+            {" "}
+            Delete
+          </button>
+        )
       }
     ];
     return (
@@ -60,5 +90,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getCrops }
+  { getCrops, deleteCrops }
 )(SystemCrop);

@@ -3,10 +3,12 @@ import { createMessage, returnErrors } from "./messages";
 
 import { GET_CONDITIONS, DELETE_CONDITIONS, ADD_CONDITIONS } from "./types";
 
+import { tokenConfig } from "./auth";
+
 // GET CONDITIONS
-export const getConditions = () => dispatch => {
+export const getConditions = () => (dispatch, getState) => {
   axios
-    .get("/api/systemcondition/")
+    .get("/api/systemcondition/", tokenConfig(getState))
     .then(res => {
       dispatch({
         type: GET_CONDITIONS,
@@ -19,9 +21,9 @@ export const getConditions = () => dispatch => {
 };
 
 // DELETE CONDITIONS
-export const deleteConditions = id => dispatch => {
+export const deleteConditions = id => (dispatch, getState) => {
   axios
-    .delete(`/api/systemcondition/${id}/`)
+    .delete(`/api/systemcondition/${id}/`, tokenConfig(getState))
     .then(res => {
       dispatch(createMessage({ deleteConditions: "Condition Deleted" }));
       dispatch({
@@ -33,9 +35,9 @@ export const deleteConditions = id => dispatch => {
 };
 
 // ADD CONDITIONS
-export const addConditions = condition => dispatch => {
+export const addConditions = condition => (dispatch, getState) => {
   axios
-    .post("/api/systemcondition/", condition)
+    .post("/api/systemcondition/", condition, tokenConfig(getState))
     .then(res => {
       dispatch(createMessage({ addCondition: "Condition Added" }));
       dispatch({
